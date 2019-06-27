@@ -82,6 +82,20 @@
             </field>
         </record>
 
+        <record id="Vue_list_professeur" model="ir.ui.view">
+          <field name="name">Vue List professeur</field>
+          <field name="model">ecole.professeur</field>
+          <field name="arch" type="xml">
+              <tree string="">
+                  <field name="name"/>
+                  <field name="last_name"/>
+                  <field name="state"/>
+                  <field name="birthday"/>
+                  <field name="date_start"/>
+              </tree>
+          </field>
+      </record>
+
         <record id="view_action_professor" model="ir.actions.act_window">
             <field name="name">view.action.professor</field>
             <field name="type">ir.actions.act_window</field>
