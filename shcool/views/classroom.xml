@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_action_classroom" model="ir.actions.act_window">
+            <field name="name">Vue Classe</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.classroom</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+
+    </data>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="classroom_categ" name="Classes" parent="school_root"/>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="classroom_action" name="Classroom" parent="classroom_categ" action="view_action_classroom" />
+</odoo>

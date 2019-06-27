@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_form_student" model="ir.ui.view">
+            <field name="name">view.form.student</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <button name="next_level" string="Next_level" class="oe_highlight" type="object"/>
+                        <button name="reset_level" type="object" string="cancel"/>
+                        <field name="state" widget="statusbar" nolabel="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="expense_button_box">
+                                <button name="send_mail"
+                                        type="object"
+                                        class="oe_stat_button"
+                                        string="mail"
+                                        icon="fa-envelope">
+                                </button>
+                        </div>
+                        <field name="image" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;:
+                                    &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Nom"/>
+                            </h1>
+                            <h2>
+                                <field name="last_name" placeholder="Prenom"/>
+                            </h2>
+
+                        </div>
+                        <group>
+                            <group>
+                                <field name="birthday"/>
+                                <field name="site" attrs="{'required': [('birthday', '!=', False)]}"/>
+                                <field name="sex"/>
+                                <field name="identity" />
+                            </group>
+                            <group>
+                                <field name="address"/>
+                                <field name="email" palceholder="email" required="1"/>
+                                <field name="phone"/>
+                                <field name="date" attrs="{'readonly': [('state', '!=', 'L1')]}"/>
+                                <field name="departement_id"/>
+                                <field name="classroom_id" attrs="{'required': [('departement_id', '!=', False)]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Liste de cours">
+                                <group>
+                                    <field name="course_ids"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_action_student" model="ir.actions.act_window">
+            <field name="name">Vue Etudiant</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.student</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="menu_categ_student" name="Student" parent="school_root" />
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_student" name="Student" parent="menu_categ_student" action="view_action_student" />
+    </data>
+</odoo>

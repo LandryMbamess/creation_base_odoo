@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="form_view_departement" model="ir.ui.view">
+        <field name="name">Vue Departement</field>
+        <field name="model">school.departement</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="professor_ids"/>
+                        <field name="student_ids"/>
+                        <field name="course_ids"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <data>
+
+       <record id="view_action_departement" model="ir.actions.act_window">
+           <field name="name">Action.departement</field>
+           <field name="type">ir.actions.act_window</field>
+           <field name="res_model">school.departement</field>
+           <field name="view_mode">tree,form</field>
+           <field name="help" type="html">
+             <p class="oe_view_nocontent_create">
+               <!-- Add Text Here -->
+                 Creer un departement
+             </p><p>
+               <!-- More details about what a user can do with this object will be OK -->
+             </p>
+           </field>
+       </record>
+
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="school_root" name="School" />
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="shool_categ_departement" name="Departement" parent="school_root" />
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="school_departement" name="Departement" parent="shool_categ_departement" action="view_action_departement"/>
+
+    </data>
+</odoo>
